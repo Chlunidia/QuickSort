@@ -59,15 +59,25 @@ namespace QuickSort
             j = high;
 
             pivot = arr[low];
-            while (i <= high)
+
+            while (i <= j)
             {
                 //Search for an element greater than pivot
-                while ((arr[i] <= pivot) && (j >= low))
+                while ((arr[i] <= pivot) && (i <= high))
+                {
+                    i++;
+                    cmp_count++;
+                }
+                cmp_count++;
+
+                //Search for an elements less then or equal to pivot
+                while ((arr[j] > pivot) && (j >= low))
                 {
                     j--;
                     cmp_count++;
                 }
                 cmp_count++;
+
 
                 if (i < j) //if the greater element is on the left of the element
                 {
@@ -96,7 +106,7 @@ namespace QuickSort
             Console.WriteLine(" Sorted array elements ");
             Console.WriteLine("-----------------------");
 
-            for (int j = 0; j < n; j++);
+            for (int j = 0; j < n; j++)
             {
                 Console.WriteLine(arr[j]);
             }
